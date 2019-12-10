@@ -1,0 +1,2 @@
+//Traveling around
+jTabbedPane1.setSelectedComponent(jPanel2);
