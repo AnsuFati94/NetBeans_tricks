@@ -12,6 +12,9 @@ boutme.setVisible(true);
         JFrame UD2_T2_AnsuFati = new UD2_T2_AnsuFati();
         UD2_T2_AnsuFati.setVisible(true);
     }  
+    
+// center panel
+this.setLocationRelativeTo(null)
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 LOGIN ICON
  private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
@@ -69,7 +72,51 @@ public class house extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"E. Set a date higher or equals than today.");
             sal.setDate(null);
         }   
-    }       
+    }     
+    
+    
+    public class notentifin {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+          JFrame frame = new JFrame();
+      frame.setContentPane(new frmIngreso());
+      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      frame.pack();
+      frame.setVisible(true);
+    }
+    
+}
+
+////////////
+ * @author dam2d08
+ */
+public class frm extends JPanel {
+    
+    public frmIngreso() {
+        initComponents();
+        if (!Beans.isDesignTime()) {
+            entityManager.getTransaction().begin();
+        }
+    }
+    
+    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt){
+        Query queryUserPass = entityManager.createNamedQuery("Usuario.findByUserPass");
+        queryUserPass.setParameter("usuario", txtUsuario.getText());
+        queryUserPass.setParameter("clave", txtPass.getText());
+        
+        List<Usuario> users = queryUserPass.getResultList();
+        
+        if (users.size()==1){
+            JOptionPane.showMessageDialog(null, "Bienvenid@: " + users.getClass(0).getUsuario());   
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Los datos ingresados no so correctos\nRevise e intente nuevamente."); 
+        }
+    }
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////     
      //JcomboBox (for places)
       private void tipoActionPerformed(java.awt.event.ActionEvent evt) {                                     
