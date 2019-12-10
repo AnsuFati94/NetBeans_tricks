@@ -5,8 +5,27 @@ System.exit(0);
 this.setVisible(false);
 JFrame boutme = new boutme();
 boutme.setVisible(true);
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //DateController (JXDatePicker)
+public class house extends javax.swing.JFrame {
+
+    Calendar today = Calendar.getInstance();
+    Calendar plusone = Calendar.getInstance();    
+    Date today2, plusone2;
+    /**
+     * Creates new form casa
+     */
+    public house() {            
+        initComponents();
+        this.setResizable(false); 
+        
+        today.add(Calendar.DAY_OF_MONTH, -1);
+        today2 = today.getTime();
+        
+        plusone.add(Calendar.YEAR, 1);
+        plusone2 = plusone.getTime();
+    }
+
  private void entradaActionPerformed(java.awt.event.ActionEvent evt) {                                        
         if ((entrada.getDate().before(today2))){
             JOptionPane.showMessageDialog(this,"E. Set a date higher or equals than 2day.");
@@ -32,6 +51,172 @@ boutme.setVisible(true);
             sal.setDate(null);
         }   
     }       
-      
-
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////     
+     //JcomboBox (for places)
+      private void tipoActionPerformed(java.awt.event.ActionEvent evt) {                                     
+         switch (tipo.getSelectedItem().toString()){
+            case "Woodlands House" :
+                desa.setVisible(false);
+                break;
+            case "Full equipment" :
+                desa.setVisible(false);
+                break;
+            case "Roomed woodland house" :
+                desa.setVisible(true);
+                break;
+            case "Mnagement center" :
+                desa.setVisible(false);
+                break;
+            case "Chill zone":
+                desa.setVisible(true);
+                break;
+        }
+    }      
+//JcomboBox (for childs)
+ private void childsActionPerformed(java.awt.event.ActionEvent evt) {                                      
+        switch (Integer.parseInt(childs.getSelectedItem().toString())){
+            case 0:
+                jLabel7.setVisible(false);
+                agno1.setVisible(false);
+                agno2.setVisible(false);
+                agno3.setVisible(false);
+                agno4.setVisible(false);
+                break;
+            case 1:
+                jLabel7.setVisible(false);
+                agno1.setVisible(false);
+                agno2.setVisible(false);
+                agno3.setVisible(false);
+                agno4.setVisible(false);
+                jLabel7.setVisible(true);
+                jLabel7.setText("Children age:");
+                agno1.setVisible(true);
+            
+                break;
+            case 2:
+                jLabel7.setVisible(false);
+                agno1.setVisible(false);
+                agno2.setVisible(false);
+                agno3.setVisible(false);
+                agno4.setVisible(false);
+                jLabel7.setVisible(true);
+                agno1.setVisible(true);
+                agno2.setVisible(true);
+              
+                break;
+            case 3:
+                jLabel7.setVisible(false);
+                agno1.setVisible(false);
+                agno2.setVisible(false);
+                agno3.setVisible(false);
+                agno4.setVisible(false);
+                jLabel7.setVisible(true);
+                agno1.setVisible(true);
+                agno2.setVisible(true);
+                agno3.setVisible(true);
+   
+                break;
+            case 4:
+                jLabel7.setVisible(false);
+                agno1.setVisible(false);
+                agno2.setVisible(false);
+                agno3.setVisible(false);
+                agno4.setVisible(false);
+                jLabel7.setVisible(true);
+                agno1.setVisible(true);
+                agno2.setVisible(true);
+                agno3.setVisible(true);
+                agno4.setVisible(true);
+                break;
+        }
+    }         
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Search btn
+private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        String result = "";
+        boolean entra = false;
+        switch (Integer.parseInt(childs.getSelectedItem().toString())){
+            case 1:
+                if (agno1.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "Rellene los campos necesarios.", "Información", JOptionPane.INFORMATION_MESSAGE);
+                entra = true;
+                }
+                else if (!agno1.getText().matches("[1-9]")) {
+                JOptionPane.showMessageDialog(null, "Rellene los campos con numeros.", "Información", JOptionPane.INFORMATION_MESSAGE);    
+                entra = true;    
+                }
+                break;
+            case 2:
+                if (agno1.getText().equals("") || agno2.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "Rellene los campos necesarios.", "Información", JOptionPane.INFORMATION_MESSAGE);
+                entra = true;
+                }
+                else if (!agno1.getText().matches("[1-9]") || !agno2.getText().matches("[1-9]")) {
+                JOptionPane.showMessageDialog(null, "Rellene los campos con numeros.", "Información", JOptionPane.INFORMATION_MESSAGE);    
+                entra = true;    
+                }
+                break;
+            case 3:
+                if (agno1.getText().equals("") || agno2.getText().equals("") || agno3.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "Rellene los campos necesarios.", "Información", JOptionPane.INFORMATION_MESSAGE);
+                entra = true;
+                }
+                else if (!agno1.getText().matches("[1-9]") || !agno2.getText().matches("[1-9]") || !agno3.getText().matches("[1-9]")) {
+                JOptionPane.showMessageDialog(null, "Rellene los campos con numeros.", "Información", JOptionPane.INFORMATION_MESSAGE);    
+                entra = true;    
+                }
+                break;
+            case 4:
+                if (agno1.getText().equals("") || agno2.getText().equals("") || agno3.getText().equals("") || agno4.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "Rellene los campos necesarios.", "Información", JOptionPane.INFORMATION_MESSAGE);
+                entra = true;
+                }
+                else if (!agno1.getText().matches("[1-9]") || !agno2.getText().matches("[1-9]") || !agno3.getText().matches("[1-9]") || !agno4.getText().matches("[1-9]")) {
+                JOptionPane.showMessageDialog(null, "Rellene los campos con numeros.", "Información", JOptionPane.INFORMATION_MESSAGE);    
+                entra = true;    
+                }
+                break;
+        }      
+        if (entra != true){
+            if (destino.getText().equals("") || entrada.getDate().equals("") || sal.getDate().equals("") || tipo.getSelectedItem().toString().equals("")
+                || adultos.getSelectedItem().toString().equals("")) {
+            JOptionPane.showMessageDialog(null, "Rellene los campos necesarios.", "Información", JOptionPane.INFORMATION_MESSAGE);
+            }
+            else {
+                if (!destino.getText().equals("")){
+                result += "Destino: " + destino.getText() + "\n";
+                }
+                if (!entrada.getDate().equals("")){
+                    result += "Fecha de Entrada: " + entrada.getDate() + "\n";
+                }
+                if (!sal.getDate().equals("")){
+                    result += "Fecha de Salida: " + sal.getDate() + "\n";
+                }
+                if(!tipo.getSelectedItem().toString().equals("")){
+                    result += "Tipo de alojamiento: " + tipo.getSelectedItem().toString() + "\n";
+                }
+                if(!desa.getSelectedItem().toString().equals("")){
+                    result += "Tipo de desayuno: " + desa.getSelectedItem().toString() + "\n";
+                }
+                if(!adultos.getSelectedItem().toString().equals("")){
+                    result += "Numero de adultos: " + adultos.getSelectedItem().toString() + "\n";
+                }
+                if (!agno1.getText().equals("")){
+                    result += "ChildAge1: " + agno1.getText() + "\n";
+                }
+                if (!agno2.getText().equals("")){
+                    result += "CA2: " + agno2.getText() + "\n";
+                }
+                if (!agno3.getText().equals("")){
+                    result += "CA3: " + agno3.getText() + "\n";
+                }
+                if (!agno4.getText().equals("")){
+                    result += "CA4: " + agno4.getText() + "\n";
+                }
+                this.setVisible(false);
+                JFrame resumenHouse = new resumenHouse(result);
+                resumenHouse.setVisible(true);  
+            }  
+        }
+                            
+    }   
