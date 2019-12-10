@@ -1,2 +1,37 @@
 //Traveling around
 jTabbedPane1.setSelectedComponent(jPanel2);
+System.exit(0);
+
+this.setVisible(false);
+JFrame boutme = new boutme();
+boutme.setVisible(true);
+
+//DateController (JXDatePicker)
+ private void entradaActionPerformed(java.awt.event.ActionEvent evt) {                                        
+        if ((entrada.getDate().before(today2))){
+            JOptionPane.showMessageDialog(this,"E. Set a date higher or equals than 2day.");
+            entrada.setDate(null);
+        } 
+        else if ((entrada.getDate().after(plusone2))){
+            JOptionPane.showMessageDialog(this,"E. Set a date lower than a year duration.");
+            entrada.setDate(null);
+        }  
+    }                                       
+
+    private void salActionPerformed(java.awt.event.ActionEvent evt) {                                    
+         if (sal.getDate().before(entrada.getDate())){
+            JOptionPane.showMessageDialog(this,"E.Set an OutDate higher than the enter one.");
+            sal.setDate(null);
+        } 
+        else if ((sal.getDate().after(plusone2))){
+            JOptionPane.showMessageDialog(this,"E.Set a date lower than a year duration.");
+            sal.setDate(null);
+        } 
+        else if ((sal.getDate().before(today2))){
+            JOptionPane.showMessageDialog(this,"E. Set a date higher or equals than today.");
+            sal.setDate(null);
+        }   
+    }       
+      
+
+
