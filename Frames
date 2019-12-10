@@ -5,7 +5,26 @@ System.exit(0);
 this.setVisible(false);
 JFrame boutme = new boutme();
 boutme.setVisible(true);
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//close method
+   private void cerActionPerformed(java.awt.event.ActionEvent evt) {                                    
+        this.setVisible(false);
+        JFrame UD2_T2_AnsuFati = new UD2_T2_AnsuFati();
+        UD2_T2_AnsuFati.setVisible(true);
+    }  
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+LOGIN ICON
+ private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        this.setVisible(false);        
+        JPanel frmIngreso = new frmIngreso();        
+        JFrame frame = new JFrame();
+        frame.setResizable(false);
+        frame.getContentPane().add(frmIngreso);    
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+    }  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////77
 //DateController (JXDatePicker)
 public class house extends javax.swing.JFrame {
 
@@ -13,7 +32,7 @@ public class house extends javax.swing.JFrame {
     Calendar plusone = Calendar.getInstance();    
     Date today2, plusone2;
     /**
-     * Creates new form casa
+     * Creates new form house
      */
     public house() {            
         initComponents();
@@ -219,4 +238,72 @@ private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
             }  
         }
                             
-    }   
+    }  
+    
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////7
+form resumen
+ private void jButton4ResActionPerformed(java.awt.event.ActionEvent evt) {                                            
+
+        
+        Nombre = jTextField1.getText();
+        Email = jTextField2Ema.getText();
+        Ciudad = jComboBox1Ciu.getSelectedItem().toString();
+        Aficiones = "";
+  
+        jTextField5Nom.setText(Nombre);
+        jTextField6Ema.setText(Email);
+        jTextField7Ciu.setText(Ciudad);
+        
+        if(jCheckBox3Cin.isSelected()){
+            Aficiones = Aficiones + "Cine ";
+        }
+        if(jCheckBox2Lec.isSelected()){
+            Aficiones = Aficiones+ "Lectura ";
+        }
+        if (jCheckBox1Dep.isSelected()){
+            Aficiones = Aficiones + "Deportes ";
+        }
+        if (jCheckBox4Mus.isSelected()){
+            Aficiones = Aficiones + "Musica";
+        }
+        if(!jCheckBox1Dep.isSelected()&&!jCheckBox2Lec.isSelected()&&!jCheckBox3Cin.isSelected()
+                &&!jCheckBox4Mus.isSelected()){
+        Aficiones = "Sin aficiones";
+        }
+        jTextField8Afi.setText(Aficiones);
+        jRadioButton1Mas.setActionCommand("Masculino");
+        jRadioButton2Fem.setActionCommand("Femenino");
+        
+        jTextField9Sex.setText(buttonGroup2.getSelection().getActionCommand());
+        jTabbedPane1.setSelectedComponent(jPanel4);
+                              
+    }  
+   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+   Clean Button
+   private void jButton5LimActionPerformed(java.awt.event.ActionEvent evt) {                                            
+            
+        jTextField1.setText("");
+        jTextField2Ema.setText("");
+        jComboBox1Ciu.setSelectedItem("Default City");
+        jCheckBox1Dep.setSelected(false);
+        jCheckBox2Lec.setSelected(false);
+        jCheckBox3Cin.setSelected(false);
+        jCheckBox4Mus.setSelected(false);
+        buttonGroup2.clearSelection();
+                                       
+    }      
+    
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    Slider Component
+     private void jSlider1StateChanged(javax.swing.event.ChangeEvent evt) {                                      
+                         
+        String pattern = "###,###.###";
+        DecimalFormat decimalFormat = new DecimalFormat(pattern);
+        
+        String format = decimalFormat.format(jSlider1.getValue());
+        jTextField3.setText((double) (jSlider1.getValue()) + " €");
+        jTextField4.setText(Integer.toString((int) (jSlider1.getValue()*1.1)) + " $");
+        jTextField10.setText(Integer.toString((int) (jSlider1.getValue()*0.86)) + " £");
+          
+    }      
